@@ -1,0 +1,25 @@
+1. mi sposto nella cartella in cui è installato pytube
+2. da terminale apro python lanciando:
+	python
+3. lancio il comando di importazione:
+	from pytube import YouTube
+4. lancio il comando:
+	YouTube("URLMIOVIDEO").streams.first().download()
+	
+Ma questo mi fa un video con audio e tutto prendendo il primo "stream" che genera, il più delle volte di qualità pessima. Più in dettaglio si può fare:
+	yt = YouTube("https://youtu.be/Bg9PeIpTwWQ")
+Questo mi genera una sua struttura dati di informazioni del video. Poi faccio:
+	yt.streams.filter(res='720p')
+Con questo comando posso filtrare con una specifica risoluzione oppure per altri parametri (es. fps, type, ecc.). Se lancio solo:
+	yt.streams
+vedo una lista di possibili streams.
+Una volta identificato uno posso scaricarlo, ad esempio:
+	yt.streams.filter(res='720p')[0].download()
+A questo punto dovrebbe essere presente nella cartella
+
+
+
+
+*** FIX ***
+C'è un problema con la regex. Qui dice come sistemarlo: https://github.com/pytube/pytube/issues/1281
+Aggiungo a un nuov branch del mio fork
